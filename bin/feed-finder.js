@@ -1,5 +1,11 @@
 #! /usr/bin/env node
 
+if (/^v0\.10\.[0-9]+$/.test(process.version)) {
+    // Remove max socket limit for 0.10.x
+    require('http').globalAgent.maxSockets = Infinity;
+    require('https').globalAgent.maxSockets = Infinity;
+}
+
 var args = process.argv.slice(2);
 var input = args.filter(function (arg) {
     return arg.indexOf('-') != 0;
