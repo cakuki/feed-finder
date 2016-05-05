@@ -1,0 +1,31 @@
+{
+  "name": "feed-finder",
+  "version": "0.1.0",
+  "description": "Stubborn feed auto discovery tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": "./bin/feed-finder.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cakuki/feed-finder.git"
+  },
+  "keywords": [
+    "rss",
+    "feed",
+    "atom",
+    "xml"
+  ],
+  "author": "Can Kutlu Kınay <me@ckk.im>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cakuki/feed-finder/issues"
+  },
+  "homepage": "https://github.com/cakuki/feed-finder#readme",
+  "dependencies": {
+    "got": "^5.6.0",
+    "htmlparser2": "^3.9.0",
+    "normalize-url": "^1.5.0"
+  }
+}
