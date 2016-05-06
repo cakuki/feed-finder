@@ -31,7 +31,7 @@ Search results for "mashable.com":
   - http://mashable.com/feed/
 ```
 
-If input misses a dot, all popular tld's appended to input. This takes slightly longer time.
+If input misses a dot, some popular tld's appended to input. This takes slightly longer time.
 
 ```sh
 $> feed-finder wired
@@ -55,6 +55,14 @@ Search results for "wired":
 ```
 
 (Some results are clipped from actual result, as they were bloating too much)
+
+#### Options
+
+##### --no-guess
+Disables known feed endpoint checks, only looks feeds in input url.
+
+##### --no-www-switch
+Disables www switch. By default feed-finder adds missing www and looks for that domain too, and removes www when it's provided.
 
 ### API
 

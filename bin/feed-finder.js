@@ -10,6 +10,11 @@ var args = process.argv.slice(2);
 var input = args.filter(function (arg) {
     return arg.indexOf('-') != 0;
 })[0];
+var flags = args.filter(function (arg) {
+    return arg.indexOf('--') == 0;
+}).map(function (arg) {
+    return arg.replace(/^\-\-/, '');
+});
 
 if (!input) {
     fail('Please provide url for searching feeds.');
@@ -17,7 +22,15 @@ if (!input) {
 
 var feedFinder = require('../');
 
-feedFinder(input, function (err, data) {
+var options = {};
+if (flags.indexOf('no-www-switch') > -1) {
+    options.noWWWSwitch = true;
+}
+if (flags.indexOf('no-guess') > -1) {
+    options.noGuess = true;
+}
+
+feedFinder(input, options, function (err, data) {
     if (err) fail(err);
 
     console.log('Search results for "%s":', input);
@@ -25,6 +38,7 @@ feedFinder(input, function (err, data) {
         console.log('  - ' + data.join('\n  - '));
     else
         console.log('  No results!');
+    process.exit(0);
 });
 
 function fail(msg) {
