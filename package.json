@@ -1,6 +1,6 @@
 {
   "name": "feed-finder",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Stubborn feed auto discovery tool",
   "main": "index.js",
   "scripts": {
