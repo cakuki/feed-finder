@@ -95,8 +95,8 @@ feed-read module is given just for sake of this example. There are numerous feed
 - `noGuess` _default: false_ - Disables known feed endpoint checks, only looks feeds in input url.
 - `noWWWSwitch` _default: false_ - Disables www switch. By default feed-finder adds missing www and looks for that domain too, and removes www when it's provided.
 - `knownFeedEndpoints` - known feed endpoint list.
-_default is_
-```
+<br>_default:_
+```js
 [
     '/?feed=rss',
     '/?feed=rss2',
@@ -110,8 +110,8 @@ _default is_
     '/services/rss/'
 ]
 ```
-You can change endpoints or their order. e.g.
-```
+You can provide other endpoints or update their order. e.g.
+```js
 [
     '/feed/',
     '/feed.xml',
@@ -124,6 +124,17 @@ You can change endpoints or their order. e.g.
     '/feed/atom/',
     '/services/rss/'
 ]
+```
+- `gotOptions` - This object is passed to [`got` options](https://github.com/sindresorhus/got/tree/v5.6.0#api) directly (refer to [`got` documentation](https://github.com/sindresorhus/got/tree/v5.6.0)).
+<br>_default:_
+```js
+{
+    timeout: 1000,
+    retries: 2,
+    headers: {
+        'user-agent': pkg.name + '/' + pkg.version + ' (' +  pkg.homepage + ')'
+    }
+}
 ```
 
 ## License
