@@ -69,8 +69,9 @@ Disables www switch. By default feed-finder adds missing www and looks for that 
 ```js
 var feedFinder = require('feed-finder'),
     feedRead = require('feed-read');
+var options = {noWWWSwitch: true};
 
-feedFinder('mashable.com', function (err, feedUrls) {
+feedFinder('mashable.com', options, function (err, feedUrls) {
     if (err) return console.error(err);
 
     feedUrls.forEach(function (feedUrl) {
@@ -89,6 +90,52 @@ feedFinder('mashable.com', function (err, feedUrls) {
 ```
 
 feed-read module is given just for sake of this example. There are numerous feed readers parsers in the wild.
+
+#### Options
+- `noGuess` _default: false_ - Disables known feed endpoint checks, only looks feeds in input url.
+- `noWWWSwitch` _default: false_ - Disables www switch. By default feed-finder adds missing www and looks for that domain too, and removes www when it's provided.
+- `knownFeedEndpoints` - known feed endpoint list.
+<br>_default:_
+```js
+[
+    '/?feed=rss',
+    '/?feed=rss2',
+    '/?feed=rdf',
+    '/?feed=atom',
+    '/feed/',
+    '/feed/rss/',
+    '/feed/rss2/',
+    '/feed/rdf/',
+    '/feed/atom/',
+    '/services/rss/'
+]
+```
+You can provide other endpoints or update their order. e.g.
+```js
+[
+    '/feed/',
+    '/feed.xml',
+    '/atom.xml',
+    '/rss.xml',
+    '/feed',
+    '/feed/rss/',
+    '/feed/rss2/',
+    '/feed/rdf/',
+    '/feed/atom/',
+    '/services/rss/'
+]
+```
+- `gotOptions` - This object is passed to [`got` options](https://github.com/sindresorhus/got/tree/v5.6.0#api) directly (refer to [`got` documentation](https://github.com/sindresorhus/got/tree/v5.6.0)).
+<br>_default:_
+```js
+{
+    timeout: 1000,
+    retries: 2,
+    headers: {
+        'user-agent': pkg.name + '/' + pkg.version + ' (' +  pkg.homepage + ')'
+    }
+}
+```
 
 ## License
 
