@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/cakuki/feed-finder#readme",
   "dependencies": {
-    "got": "^13.0.0",
+    "got": "^14.0.0",
     "htmlparser2": "^9.0.0"
   }
 }
